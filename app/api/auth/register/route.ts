@@ -111,19 +111,19 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const token = createAuthToken({
-    sub: user.id,
-    email: user.email,
-    name: user.fullName,
-  });
+const token = createAuthToken({
+  sub: user!.id,
+  email: user!.email,
+  name: user!.fullName,
+});
 
-  const response = NextResponse.json({
-    user: {
-      id: user.id,
-      fullName: user.fullName,
-      email: user.email,
-    },
-  });
+const response = NextResponse.json({
+  user: {
+    id: user!.id,
+    fullName: user!.fullName,
+    email: user!.email,
+  },
+});
 
   setAuthCookie(response, token);
 
